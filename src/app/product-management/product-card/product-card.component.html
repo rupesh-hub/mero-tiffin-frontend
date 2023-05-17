@@ -1,0 +1,74 @@
+<mat-card class="example-card bg-light">
+  <!-- <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ product?.title | slice : 0 : 13 }}...</mat-card-title>
+  </mat-card-header> -->
+
+  <img
+    mat-card-image
+    [src]="dummyImage"
+    alt="no image.. "
+    style="height: 200px"
+  />
+
+  <div class="product-description">
+    <!-- <mat-card-subtitle class="product-name">
+      {{ product?.brand }}
+    </mat-card-subtitle> -->
+
+    <!-- <mat-card-subtitle class="bg-white text-dark p-2 rounded mb-1">
+      {{ product?.category }}
+    </mat-card-subtitle> -->
+
+    <mat-card-subtitle class="product-name text-dark">
+      {{ product?.title }}
+    </mat-card-subtitle>
+    <!-- | slice : 0 : 13  -->
+
+    <mat-card-subtitle class="product-price text-dark">
+      {{ product?.price }} $
+    </mat-card-subtitle>
+
+    <!-- <mat-card-subtitle class="text-dark">
+      {{ product?.stock }} pis
+    </mat-card-subtitle> -->
+
+    <!-- <mat-card-subtitle class="text-dark">
+      {{ product?.discountPercentage }} %
+    </mat-card-subtitle> -->
+
+    <!-- <mat-card-subtitle class="text-dark">
+      {{ product?.description | slice : 0 : 35 }} ...
+    </mat-card-subtitle> -->
+    <mat-card-actions>
+      <a
+        *ngIf="!isCartBtn"
+        mat-flat-button
+        color="primary"
+        [routerLink]="redirectLink"
+        class="w-50"
+      >
+        {{ buttonText }}
+      </a>
+
+      <a
+        *ngIf="isCartBtn"
+        mat-flat-button
+        color="warn"
+        [routerLink]="redirectLink"
+        class="w-50"
+        (click)="addToCart(product)"
+      >
+        {{ buttonText }}
+      </a>
+      <button
+        mat-flat-button
+        class="w-50"
+        style="margin-left: 5px"
+        (click)="onClickFavorite(product?.id)"
+      >
+        <mat-icon matBadgeColor="warn">favorite</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

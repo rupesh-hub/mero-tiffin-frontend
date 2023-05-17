@@ -1,0 +1,127 @@
+<!-- {{ itemState$ | async | json }} -->
+<ng-container
+  *ngIf="itemState$ | async as itemState"
+  [ngSwitch]="itemState.status"
+>
+  <ng-container *ngSwitchCase="'ERROR'">
+    {{ itemState.error.message | json }}
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'LOADING'">
+    <div class="d-flex justify-content-center mt-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'LOADED'">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <div class="header">
+            <h2 class="text-uppercase">My whishlist</h2>
+            <hr />
+          </div>
+
+          <table class="table ysabeau-font">
+            <thead>
+              <tr>
+                <th scope="col">S.N.</th>
+                <th scope="col">Product</th>
+                <th scope="col">Added On</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <ng-container
+                *ngFor="let product of itemState.data.data; let i = index"
+              >
+                <tr>
+                  <td scope="row">{{ i + 1 }}</td>
+                  <td>
+                    <div class="cart-product-detail bg-light">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img [src]="dummyImage" alt=" no image.." />
+                        </div>
+                        <div class="col-md-6">
+                          <h3 id="product-title">
+                            {{ product?.title | uppercase }}
+                          </h3>
+                          <hr />
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <h3>{{ product?.createdDate | date : "medium" }}</h3>
+                  </td>
+
+                  <td>
+                    <h3>{{ product?.price }} $</h3>
+                  </td>
+
+                  <td>
+                    <h3>{{ product?.stock }}</h3>
+                  </td>
+                  <td class="d-flex">
+                    <a (click)="addToCart(product)">
+                      <mat-icon
+                        matTooltip="add to cart"
+                        style="cursor: pointer; color: green"
+                      >
+                        add_shopping_cart
+                      </mat-icon>
+                    </a>
+                    <a (click)="deleteWishlist(product?.productId)">
+                      <mat-icon
+                        matTooltip="remove from wishlist"
+                        style="cursor: pointer; margin-left: 5px; color: red"
+                      >
+                        delete
+                      </mat-icon>
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf = "wishlistSize > 5">
+      <div class="row">
+        <div class="d-flex justify-content-center">
+          <nav>
+            <ul class="custom-pagination">
+              <li class="page-item" [class.disabled]="currentPage <= 1">
+                <button mat-flat-button (click)="onPageChanged(currentPage - 1)">
+                  PREVIOUS
+                </button>
+              </li>
+              <li
+                class="page-item"
+                *ngFor="let page of range(pages)"
+                [class.custom-active]="page + 1 === currentPage"
+              >
+                <button mat-flat-button (click)="onPageChanged(page + 1)">
+                  {{ page + 1 }}
+                </button>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage >= pages">
+                <button mat-flat-button (click)="onPageChanged(currentPage + 1)">
+                  NEXT
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

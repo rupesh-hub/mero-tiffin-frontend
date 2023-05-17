@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau&display=swap");
+
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+  
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ysabeau-font {
+  font-family: "Ysabeau", sans-serif;
+}

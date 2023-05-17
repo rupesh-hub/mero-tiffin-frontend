@@ -1,0 +1,104 @@
+table,
+tr,
+th,
+td {
+  border: none;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  font-family: "Ysabeau", sans-serif;
+  border-bottom: 1px solid #d7d2d2;
+}
+
+th {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.cart-product-detail {
+  border-radius: 5px;
+//   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  padding: 5px 0;
+//   width: 250px;
+
+  img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+  }
+
+  #product-title{
+    color: rgb(101, 99, 99);
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Ysabeau", sans-serif;
+  }
+}
+
+// .item-qty {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   font-family: "Ysabeau", sans-serif;
+//   color: green;
+
+//   span {
+//     margin-right: 10px;
+//   }
+//   input[type="number"] {
+//     width: 75px;
+//     border: none;
+//     background: #f7f7f7;
+//     padding: 10px;
+//     border-radius: 5px;
+//   }
+// }
+
+// .font-weight-bold {
+//   font-weight: 700;
+//   letter-spacing: 2px;
+// }
+
+.custom-pagination {
+  --pagination-active-color: #f44336;
+  --pagination-disabled-color: rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-wrap: wrap; /* allows the items to wrap to a new line if necessary */
+  justify-content: center;
+  align-items: center; /* centers the items vertically */
+
+  li {
+    list-style: none;
+    margin-right: 10px;
+  }
+
+  button {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #f7f7f7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #f7f7f7;
+    border-color: #f44336;
+  }
+
+  .custom-active button {
+    background-color: var(--pagination-active-color);
+    border-color: var(--pagination-active-color);
+    color: #fff;
+  }
+
+  .disabled button {
+    background-color: var(--pagination-disabled-color);
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.4);
+  }
+}

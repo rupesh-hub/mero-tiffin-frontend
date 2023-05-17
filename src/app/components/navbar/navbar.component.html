@@ -1,0 +1,109 @@
+<mat-toolbar class="bg-light mb-2">
+  <span class="ysabeau-font text-dark">DEMO APP</span>
+
+  <a
+    mat-icon-button
+    class="back-link"
+    routerLink="/products"
+    *ngIf="backLink"
+    style="display: flex; align-items: center"
+  >
+    <span style="margin-left: 5px">< back to store</span>
+  </a>
+
+  <span class="custom-spacer"></span>
+
+  <!-- MIDDLE AREA NAV START -->
+  <div class="headerNav" *ngIf="headerNav">
+    <button
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      mat-icon-button
+      class="ysabeau-font text-dark custom-btn mr-10"
+    >
+      <mat-icon class="icon">home</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      routerLinkActive="active"
+      class="ysabeau-font text-dark custom-btn mr-10"
+      routerLink="/products"
+    >
+      <mat-icon>store</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      routerLinkActive="active"
+      class="ysabeau-font text-dark custom-btn mr-10"
+    >
+      <mat-icon>shop</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      routerLinkActive="active"
+      class="ysabeau-font text-dark custom-btn mr-10"
+    >
+      <mat-icon>chat</mat-icon>
+    </button>
+    
+  </div>
+  <!-- MIDDLE AREA NAV END -->
+
+  <span class="custom-spacer"></span>
+
+  <button
+    mat-icon-button
+    routerLink="/cart"
+    routerLinkActive="active"
+    class="ysabeau-font text-dark custom-btn mr-10"
+  >
+    <mat-icon [matBadge]="cartSize" matBadgeColor="warn">add_shopping_cart</mat-icon
+    >
+  </button>
+
+  <button
+    mat-icon-button
+    routerLinkActive="active"
+    class="ysabeau-font text-dark mr-10"
+    routerLink="/wishlist"
+    routerLinkActive="active"
+  >
+    <mat-icon [matBadge]="wishlistSize" matBadgeColor="warn">favorite</mat-icon>
+  </button>
+
+  <button
+    mat-flat-button
+    routerLinkActive="active"
+    routerLink="/user/login"
+    class="ysabeau-font bg-white mr-10"
+    *ngIf="!isLoggedIn"
+  >
+    <mat-icon class="text-dark">input</mat-icon>
+    <span class="ysabeau-font text-dark"> LOGIN </span>
+  </button>
+
+  <ng-container *ngIf="isLoggedIn">
+    <button
+      mat-flat-button
+      routerLinkActive="active"
+      class="ysabeau-font bg-white mr-10"
+      routerLink="/profile"
+    >
+      <mat-icon class="text-dark">account_circle</mat-icon>
+      <span class="ysabeau-font text-dark"> RUPESH DULAL </span>
+    </button>
+
+    <button
+      mat-flat-button
+      class="ysabeau-font bg-white"
+      (click)="logoutUser()"
+    >
+      <mat-icon class="text-dark">lock</mat-icon>
+      <span class="ysabeau-font text-dark"> LOGOUT </span>
+    </button>
+  </ng-container>
+</mat-toolbar>

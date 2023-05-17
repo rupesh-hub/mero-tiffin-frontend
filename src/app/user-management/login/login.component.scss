@@ -1,0 +1,17 @@
+// @import "/src/app/_config/common-form-style.scss";
+.nav-link {
+  color: rgba(27, 133, 227, 0.689);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .link{
+    margin-right: 5px;
+    border-bottom: 1px solid #fff;
+    padding: 3px;
+  }
+
+  .is-invalid{
+    border-left: 6px solid red;
+  }
+}

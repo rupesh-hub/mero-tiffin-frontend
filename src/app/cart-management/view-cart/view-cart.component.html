@@ -1,0 +1,160 @@
+<!-- {{ itemState$ | async | json }} -->
+<ng-container
+  *ngIf="itemState$ | async as itemState"
+  [ngSwitch]="itemState.status"
+>
+  <!-- <ng-container *ngSwitchCase="'ERROR'">
+    {{ itemState.error.message | json }}
+  </ng-container> -->
+
+  <!-- <ng-container *ngSwitchCase="'LOADING'">
+    <div class="d-flex justify-content-center mt-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-container> -->
+
+  <ng-container *ngSwitchCase="'LOADED'">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <div class="header">
+            <h2 class="text-uppercase">My cart</h2>
+            <hr />
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">S.N.</th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">wishlist</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <ng-container
+                *ngFor="let product of itemState.data.data; let i = index"
+              >
+                <tr>
+                  <td scope="row">{{ i + 1 }}</td>
+                  <td>
+                    <div class="cart-product-detail bg-light">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img [src]="dummyImage" alt=" no image.." />
+                        </div>
+                        <div class="col-md-6">
+                          <h3>{{ product.productTitle | uppercase }}</h3>
+                          <hr />
+                          <h3>{{ product.subTotal }} $</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="item-qty">
+                      <input
+                        type="number"
+                        class="text-center"
+                        [value]="product.quantity"
+                        readonly
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <mat-icon *ngIf="product?.wish > 0" class="text-success">
+                      done
+                    </mat-icon>
+                    <mat-icon *ngIf="product?.wish == 0" class="text-danger">
+                      clear
+                    </mat-icon>
+                  </td>
+                  <td>
+                    <a (click)="deleteCartItem(product?.productId)">
+                      <mat-icon
+                        matTooltip="remove from cart"
+                        style="cursor: pointer; margin-left: 5px; color: red"
+                      >
+                        delete
+                      </mat-icon>
+                    </a>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-4">
+          <div class="price-detail bg-light p-4">
+            <h3 class="text-center font-weight-bold">ORDER SUMMARY</h3>
+            <div class="row">
+              <tr class="d-flex justify-content-between">
+                <th>Subtotal</th>
+                <td>{{ shopDetails?.subTotal | number : "1.2-3" }}$</td>
+              </tr>
+              <hr />
+              <tr class="d-flex justify-content-between">
+                <th>Shipping charge</th>
+                <td>{{ shopDetails?.shippingCharge | number : "1.2-3" }}$</td>
+              </tr>
+              <hr />
+
+              <tr class="d-flex justify-content-between">
+                <th>Estimated total</th>
+                <td>{{ shopDetails?.estimatedTotal | number : "1.2-3" }}$</td>
+              </tr>
+            </div>
+            <hr />
+
+            <div>
+              <button mat-flat-button color="warn" class="w-100">
+                CHECKOUT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="cartSize > 5">
+      <div class="row">
+        <div class="d-flex justify-content-center">
+          <nav>
+            <ul class="custom-pagination">
+              <li class="page-item" [class.disabled]="currentPage <= 1">
+                <button
+                  mat-flat-button
+                  (click)="onPageChanged(currentPage - 1)"
+                >
+                  PREVIOUS
+                </button>
+              </li>
+              <li
+                class="page-item"
+                *ngFor="let page of range(pages)"
+                [class.custom-active]="page + 1 === currentPage"
+              >
+                <button mat-flat-button (click)="onPageChanged(page + 1)">
+                  {{ page + 1 }}
+                </button>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage >= pages">
+                <button
+                  mat-flat-button
+                  (click)="onPageChanged(currentPage + 1)"
+                >
+                  NEXT
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

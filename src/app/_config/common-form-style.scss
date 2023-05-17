@@ -1,0 +1,122 @@
+.row .form {
+    padding: 2em;
+    border-radius: 3px;
+  }
+  
+  .row .form h5 {
+    font-family: "Righteous", cursive;
+  }
+  
+  .row .form .fa-arrow-square-left {
+    font-size: 1.4em;
+    color: red;
+    cursor: pointer;
+  }
+  
+  .row .form td {
+    font-weight: 500;
+    color: #413f3f;
+    width: 200px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .row .form td input {
+    margin-bottom: 10px;
+    width: 350px;
+    height: 2.7em;
+    border-radius: 55px;
+    background: #f1efef;
+    padding: 1em;
+    border: 1px solid lightgrey;
+    color: #585858;
+  }
+  
+  .row .form td input:focus {
+    outline: none;
+  }
+  
+  .row .form td span {
+    font-size: 13px;
+  }
+  
+  .row .form td .btn-submit,
+  .row .form td .btn-clear {
+    border: none;
+    margin-right: 10px;
+    padding: 0.5em;
+    border-radius: 3px;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .row .form td .btn-submit {
+    background-color: #00b74a;
+  }
+  
+  .row .form td .btn-submit:disabled {
+    background: lightgrey;
+    color: #afaeae;
+    cursor: not-allowed;
+  }
+  
+  .row .form td .btn-clear {
+    background-color: #f93154;
+  }
+  
+  @media screen and (max-width: 1050px) {
+    .create-admin-form table td {
+      width: 150px;
+    }
+    .create-admin-form table td input[type="text"],
+    .create-admin-form table td input[type="password"] {
+      width: 320px;
+    }
+  }
+  
+  @media screen and (max-width: 991px) {
+    .create-admin-form table td {
+      width: 150px;
+    }
+    .create-admin-form table td input[type="text"],
+    .create-admin-form table td input[type="password"] {
+      width: 250px;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .container-fluid {
+      margin-left: 0;
+    }
+    .container-fluid h5 {
+      font-size: 1.1em;
+    }
+    .container-fluid .form {
+      padding: 10px;
+    }
+    .container-fluid .form table td {
+      width: 120px;
+    }
+    .container-fluid .form table td input {
+      width: 220px;
+    }
+  }
+  
+  @media screen and (max-width: 374px) {
+    .container-fluid h5 {
+      font-size: 1em;
+    }
+    .container-fluid .form {
+      padding: 10px;
+    }
+    .container-fluid .form table td {
+      width: 100px;
+      font-size: 13px;
+    }
+    .container-fluid .form table td input {
+      width: 200px;
+    }
+  }
+  /*# sourceMappingURL=common-form-style.css.map */
